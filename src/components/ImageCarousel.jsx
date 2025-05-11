@@ -88,12 +88,6 @@ const ImageCarousel = () => {
           <button className="carousel-control next" onClick={goToNext}>
             ❯
           </button>
-          <button
-            className={`auto-play-button ${isAutoPlaying ? "playing" : ""}`}
-            onClick={toggleAutoPlay}
-          >
-            {isAutoPlaying ? "⏸" : "▶"}
-          </button>
         </div>
       </div>
     </div>
