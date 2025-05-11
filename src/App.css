@@ -166,40 +166,41 @@
 }
 
 .hamburger {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
   padding: 8px;
   width: 44px;
   height: 44px;
-  position: relative;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
   z-index: 1001;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .hamburger:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateX(2px);
+  background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .hamburger-lines {
+  width: 25px;
+  height: 20px;
   position: relative;
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 6px;
+  justify-content: space-between;
 }
 
 .hamburger-lines span {
   display: block;
   width: 100%;
   height: 2px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: white;
   border-radius: 4px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -219,7 +220,7 @@
 .nav-menu {
   position: fixed;
   top: 0;
-  left: -300px;
+  left: -100%;
   width: 300px;
   height: 100vh;
   background: linear-gradient(
@@ -231,23 +232,18 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-right: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 5rem 2rem 2rem;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 5rem 2rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.8rem;
-  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.15),
-    inset 0 0 40px rgba(255, 255, 255, 0.05);
-  transform: translateX(0);
+  gap: 1.5rem;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.15);
   z-index: 999;
   overflow-y: auto;
-  visibility: hidden;
 }
 
 .nav-menu.active {
   left: 0;
-  transform: translateX(0);
   visibility: visible;
 }
 
@@ -284,80 +280,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.hamburger {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: none;
-  border-radius: 8px;
-  padding: 0.8rem;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-.hamburger-lines {
-  width: 25px;
-  height: 20px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.hamburger-lines span {
-  display: block;
-  height: 2px;
-  width: 100%;
-  background: white;
-  transition: all 0.3s ease;
-}
-
-.hamburger-lines.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger-lines.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger-lines.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
-}
-
-.nav-menu {
-  position: fixed;
-  top: 0;
-  left: -300px;
-  width: 300px;
-  height: 100vh;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.08) 50%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 5rem 2rem;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.15);
-  z-index: 999;
-  overflow-y: auto;
-  visibility: hidden;
-  transform: translateX(0);
-}
-
-.nav-menu.active {
-  left: 0;
-  visibility: visible;
-  transform: translateX(300px);
-}
 
 .nav-menu a {
   color: white;
@@ -406,12 +329,9 @@
     left: -100%;
     border-right: none;
     padding: 4rem 1.5rem;
-    transform: translateX(0);
-    transition: transform 0.3s ease-in-out, visibility 0.3s ease;
   }
 
   .nav-menu.active {
-    transform: translateX(100%);
     left: 0;
   }
 
@@ -422,10 +342,10 @@
     background: rgba(255, 255, 255, 0.05);
     margin-bottom: 0.5rem;
     text-align: center;
+    width: 100%;
   }
 
   .hamburger {
-    margin-right: 1rem;
     width: 40px;
     height: 40px;
     padding: 6px;
