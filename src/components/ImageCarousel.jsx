@@ -46,18 +46,23 @@ const ImageCarousel = () => {
   const goToPrevious = useCallback(() => {
     if (!isTransitioning) {
       setIsTransitioning(true);
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+      setCurrentIndex(
+        (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      );
       setTimeout(() => setIsTransitioning(false), 800);
     }
   }, [isTransitioning, images.length]);
 
-  const goToSlide = useCallback((index) => {
-    if (!isTransitioning && index !== currentIndex) {
-      setIsTransitioning(true);
-      setCurrentIndex(index);
-      setTimeout(() => setIsTransitioning(false), 800);
-    }
-  }, [isTransitioning, currentIndex]);
+  const goToSlide = useCallback(
+    (index) => {
+      if (!isTransitioning && index !== currentIndex) {
+        setIsTransitioning(true);
+        setCurrentIndex(index);
+        setTimeout(() => setIsTransitioning(false), 800);
+      }
+    },
+    [isTransitioning, currentIndex]
+  );
 
   const toggleAutoPlay = () => {
     setIsAutoPlaying(!isAutoPlaying);
@@ -70,10 +75,11 @@ const ImageCarousel = () => {
           <img
             src={images[currentIndex]}
             alt={`Slide ${currentIndex + 1}`}
-            className={`carousel-image ${isTransitioning ? 'transitioning' : ''}`}
+            className={`carousel-image ${
+              isTransitioning ? "transitioning" : ""
+            }`}
             style={{
-              transform: isTransitioning ? 'scale(1.05)' : 'scale(1)',
-              opacity: isTransitioning ? '0.8' : '1'
+              opacity: isTransitioning ? "0.8" : "1",
             }}
           />
           <button className="carousel-control prev" onClick={goToPrevious}>
@@ -88,15 +94,6 @@ const ImageCarousel = () => {
           >
             {isAutoPlaying ? "⏸" : "▶"}
           </button>
-        </div>
-        <div className="carousel-indicators">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              className={`indicator ${index === currentIndex ? "active" : ""}`}
-              onClick={() => goToSlide(index)}
-            />
-          ))}
         </div>
       </div>
     </div>
